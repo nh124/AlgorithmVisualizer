@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
 import { useSelector, useDispatch } from 'react-redux';
 import { BsChevronDoubleDown } from 'react-icons/bs';
@@ -33,7 +34,7 @@ function Navbar() {
             <BsChevronDoubleDown />
           </div>
         </button>
-        <NavbarDesktop enlargeNavBar={enlargeNavBar} />
+        <NavbarDesktop />
       </div>
       <NavBarMobile showMobileMenu={showMobileMenu} />
       {/* Right Side */}

@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect } from 'vitest';
 import { render as rtlRender } from '@testing-library/react';
-import Navbar from './Navbar';
 import { Provider } from 'react-redux';
-import store from '../../../Redux/store.tsx';
+import Navbar from './Navbar';
+import store from '../../../Redux/store';
 
-const render = (component) =>
+const render = (component: any) =>
   rtlRender(<Provider store={store}>{component}</Provider>);
 
 describe('Navbar', () => {
