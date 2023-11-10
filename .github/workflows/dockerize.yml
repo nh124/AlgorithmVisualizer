@@ -1,0 +1,36 @@
+name: dockerize
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  Docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+
+      - name: setup git config
+        run: |
+          git config user.name "Github Actions Bot"
+          git config user.email "nur.haque99@gmail.com"
+
+      - name: dependencies
+        run: npm ci
+
+      - name: build
+        run: npm run build
+
+      - name: Login to DockerHub repository
+        run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+
+      - name: Build Docker image
+        run: docker build . --file dockerfile --tag nhaque123/algorithm_visualizer
+
+      - name: Push to DockerHub
+        run: docker push nhaque123/algorithm_visualizer
