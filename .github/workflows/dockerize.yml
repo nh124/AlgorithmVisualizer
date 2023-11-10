@@ -21,7 +21,7 @@ jobs:
           git config user.email "nur.haque99@gmail.com"
 
       - name: dependencies
-        run: npm ci
+        run: npm install
 
       - name: build
         run: npm run build
