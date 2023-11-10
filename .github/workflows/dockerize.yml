@@ -10,7 +10,7 @@ jobs:
   Docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout
+      - uses: actions/checkout@v2
       - uses: actions/setup-node@v3
         with:
           node-version: 18
@@ -30,7 +30,7 @@ jobs:
         run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
       - name: Build Docker image
-        run: docker build . --file dockerfile --tag nhaque123/algorithm_visualizer
+        run: docker build . --file Dockerfile --tag nhaque123/algorithm_visualizer
 
       - name: Push to DockerHub
         run: docker push nhaque123/algorithm_visualizer
