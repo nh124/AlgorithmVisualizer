@@ -22,10 +22,11 @@ function Navbar() {
       <div className="flex flex-row justify-start items-center w-full h-[50px]">
         <button
           type="button"
-          className="text-white py-3 w-[180px] h-[50px] text-xl text-center font-bold flex flex-row justify-center items-center gap-2 max-md:hover:cursor-pointer"
+          className="linkedList text-white py-3 w-[180px] h-[50px] text-xl text-center font-bold flex flex-row justify-center items-center gap-2 max-md:hover:cursor-pointer"
           onClick={() => dispatch(setShowMobileMenu())}
+          data-testid="LinkedList_Botton"
         >
-          <h1 data-testid="name">Linked List</h1>
+          <h1>Linked List</h1>
           <div
             className={`hidden max-md:flex duration-300 ${
               showMobileMenu ? 'rotate-180' : ''

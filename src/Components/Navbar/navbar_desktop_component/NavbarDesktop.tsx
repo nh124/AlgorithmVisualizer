@@ -8,8 +8,12 @@ import { setEnlargeNavBar } from '../../../Redux/NavBarReducer';
 
 function NavbarDesktop() {
   const dispatch = useDispatch();
+
   return (
-    <div className="w-fit h-[50px] flex justify-start items-center flex-row gap-3 max-md:hidden flex-wrap">
+    <div
+      className="w-fit h-[50px] flex justify-start items-center flex-row gap-3 max-md:hidden flex-wrap"
+      data-testid="desktop-comp"
+    >
       {/* ADD */}
       <NavIcons
         name="Add Node"
@@ -32,15 +36,6 @@ function NavbarDesktop() {
         FormBox={{ required: true, name: 'Search Node', label: 'Ex. 1' }}
         mobile={false}
       />
-      <button
-        type="button"
-        className="max-[845px]:inline hidden hover:cursor-pointer"
-        onClick={() => {
-          dispatch(setEnlargeNavBar());
-        }}
-      >
-        <FiMoreVertical style={{ color: 'white' }} />
-      </button>
 
       {/* Create */}
       <NavIcons
@@ -49,6 +44,16 @@ function NavbarDesktop() {
         FormBox={{ required: false }}
         mobile={false}
       />
+      <button
+        type="button"
+        data-testid="manu_icon"
+        className="max-[1044px]:inline hidden hover:cursor-pointer"
+        onClick={() => {
+          dispatch(setEnlargeNavBar());
+        }}
+      >
+        <FiMoreVertical style={{ color: 'white' }} />
+      </button>
       {/* Clear */}
       <NavIcons
         name="Clear LinkedList"

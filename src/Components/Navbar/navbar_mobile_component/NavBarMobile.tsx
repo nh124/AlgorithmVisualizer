@@ -13,6 +13,7 @@ function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
         paddingTop: `${showMobileMenu ? 16 : 0}px`,
         transition: `height 0.3s ease`,
       }}
+      data-testid="mobile-menu"
     >
       {Array.from({ length: size }).map((_, index) => (
         <div

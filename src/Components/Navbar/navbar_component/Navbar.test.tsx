@@ -1,17 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect } from 'vitest';
-import { render as rtlRender } from '@testing-library/react';
+import {
+  render as rtlRender,
+  screen,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import Navbar from './Navbar';
+
 import store from '../../../Redux/store';
 
 const render = (component: any) =>
   rtlRender(<Provider store={store}>{component}</Provider>);
 
-describe('Navbar', () => {
-  it('Checking the title', () => {
-    const { getByTestId } = render(<Navbar />);
-    const value = getByTestId('name').textContent;
-    expect(value).toEqual('Linked List');
+// move this to NavbarMobile
+describe('NavBarMobile', () => {
+  it('Checking navbar movile height', async () => {
+    render(<Navbar />);
+    const mobileMenu = screen.getByTestId('mobile-menu');
+    const button = screen.getByTestId('LinkedList_Botton');
+    const styles = window.getComputedStyle(mobileMenu);
+    expect(styles.height).toBe('0px');
+    fireEvent.click(button);
+    await waitFor(() => {
+      const updateStyles = window.getComputedStyle(mobileMenu);
+      expect(updateStyles.height).toBe('410px');
+    });
   });
 });
