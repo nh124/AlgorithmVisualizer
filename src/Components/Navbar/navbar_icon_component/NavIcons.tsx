@@ -7,6 +7,7 @@ import NodeIcon from '../../../Icons/NodeIcon';
 import IconType from '../../../OtherFunctions/IconTypes';
 import FormBoxType from '../../../OtherFunctions/FormBoxType';
 import { UnisetEnlargeNavBar } from '../../../Redux/NavBarReducer';
+import { BsWindowSidebar } from 'react-icons/bs';
 
 function NavIcons({
   name,
@@ -37,7 +38,9 @@ function NavIcons({
       <button
         onClick={() => {
           setDropForm(!dropForm);
-          dispatch(UnisetEnlargeNavBar());
+          if (window.innerWidth <= 1041) {
+            dispatch(UnisetEnlargeNavBar());
+          }
         }}
         type="button"
         data-testid="NavButton"

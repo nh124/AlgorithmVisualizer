@@ -9,15 +9,18 @@ import { setEnlargeNavBar } from '../../../Redux/NavBarReducer';
 function NavbarDesktop() {
   const dispatch = useDispatch();
   const { enlargeNavBar } = useSelector((state: any) => state.NavbarRed);
-  const [currentStyle, setCurrentStyle] = useState({});
+  const [currentStyle, setCurrentStyle] = useState({ overflow: 'visible' });
   useEffect(() => {
-    if (!enlargeNavBar) {
+    if (!enlargeNavBar && window.innerWidth <= 1041) {
       setCurrentStyle({ overflow: 'hidden' });
     }
     if (enlargeNavBar) {
       setTimeout(() => {
         setCurrentStyle({ overflow: 'visible' });
       }, 300);
+    }
+    if (window.innerWidth > 104) {
+      setCurrentStyle({ overflow: 'visible' });
     }
   }, [enlargeNavBar]);
 

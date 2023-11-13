@@ -13,7 +13,7 @@ describe('NavbarDesktop', () => {
       </Provider>
     );
     const desktopNavBar = screen.getByTestId('desktop-comp');
-    expect(desktopNavBar).toHaveStyle('overflow: hidden');
+    expect(desktopNavBar).toHaveStyle('overflow: visible');
     act(() => {
       store.dispatch(setEnlargeNavBar());
       render(
