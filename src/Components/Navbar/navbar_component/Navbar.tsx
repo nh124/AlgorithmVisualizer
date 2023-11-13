@@ -14,9 +14,11 @@ function Navbar() {
   const dispatch = useDispatch();
   return (
     <div
-      className={`w-full ${
-        enlargeNavBar ? 'h-[120px]' : 'h-[50px]'
-      }  bg-[#34495E] flex flex-row justify-between pl-1 pr-4 transition-height duration-500 ease-in-out relative`}
+      className="w-full bg-[#34495E] flex flex-row justify-between pl-1 pr-4 transition-height duration-500 ease-in-out relative"
+      data-testid="NavBar"
+      style={{
+        height: `${enlargeNavBar && window.innerWidth >= 768 ? 120 : 50}px`,
+      }}
     >
       {/* left side */}
       <div className="flex flex-row justify-start items-center w-full h-[50px]">

@@ -1,6 +1,12 @@
 import { useState } from 'react';
 import { BiSolidUpArrow } from 'react-icons/bi';
+import { useDispatch } from 'react-redux';
 import FormComponent from '../../FormComponent';
+import TrashIcon from '../../../Icons/TrashIcon';
+import NodeIcon from '../../../Icons/NodeIcon';
+import IconType from '../../../OtherFunctions/IconTypes';
+import FormBoxType from '../../../OtherFunctions/FormBoxType';
+import { UnisetEnlargeNavBar } from '../../../Redux/NavBarReducer';
 
 function NavIcons({
   name,
@@ -9,11 +15,19 @@ function NavIcons({
   mobile,
 }: {
   name: string;
-  icon: any;
-  FormBox: any;
+  icon: IconType;
+  FormBox: FormBoxType;
   mobile: boolean;
 }) {
   const [dropForm, setDropForm] = useState(false);
+  const dispatch = useDispatch();
+  const icons = {
+    AddIcon: <TrashIcon size={30} color="white" />,
+    DeleteIcon: <TrashIcon size={30} color="white" />,
+    SearchIcon: <NodeIcon size={30} status="clear" color="white" />,
+    createIcon: <NodeIcon size={30} status="create" color="white" />,
+    clearIcon: <NodeIcon size={30} status="clear" color="white" />,
+  };
   return (
     <div
       className={`${
@@ -21,9 +35,12 @@ function NavIcons({
       } h-full text-white flex justify-center items-center hover:bg-[#1ABC9C] duration-300 ease-in-out group relative`}
     >
       <button
-        onClick={() => setDropForm(!dropForm)}
+        onClick={() => {
+          setDropForm(!dropForm);
+          dispatch(UnisetEnlargeNavBar());
+        }}
         type="button"
-        data-testid="NavIcon"
+        data-testid="NavButton"
         className="w-full h-full px-3 py-3"
       >
         <div className="flex flex-row justify-center items-center gap-2 relative">
@@ -34,7 +51,7 @@ function NavIcons({
             <BiSolidUpArrow />
           </div>
         </div>
-        {icon}
+        {icons[icon]}
       </button>
 
       <div
@@ -44,7 +61,7 @@ function NavIcons({
         } bg-slate-500`}
       >
         {FormBox.required && (
-          <FormComponent name={FormBox.name} lable={FormBox.label} />
+          <FormComponent name={FormBox.name} label={FormBox.label} />
         )}
       </div>
     </div>

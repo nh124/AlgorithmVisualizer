@@ -8,20 +8,38 @@ export const NavBarReducer = createSlice({
     showMobileMenu: false,
   },
   reducers: {
-    //action
+    // action
     setShowMenu: (state) => {
-      // reducer
-      state.showMenu = !state.showMenu;
+      return {
+        ...state,
+        showMenu: !state.showMenu, // Toggling the showMenu boolean
+      };
     },
     setEnlargeNavBar: (state) => {
-      state.enlargeNavBar = !state.enlargeNavBar;
+      return {
+        ...state,
+        enlargeNavBar: !state.enlargeNavBar,
+      };
     },
     setShowMobileMenu: (state) => {
-      state.showMobileMenu = !state.showMobileMenu;
+      return {
+        ...state,
+        showMobileMenu: !state.showMobileMenu,
+      };
+    },
+    UnisetEnlargeNavBar: (state) => {
+      return {
+        ...state,
+        enlargeNavBar: true,
+      };
     },
   },
 });
 
-export const { setShowMenu, setEnlargeNavBar, setShowMobileMenu } =
-  NavBarReducer.actions;
+export const {
+  setShowMenu,
+  setEnlargeNavBar,
+  setShowMobileMenu,
+  UnisetEnlargeNavBar,
+} = NavBarReducer.actions;
 export default NavBarReducer.reducer;

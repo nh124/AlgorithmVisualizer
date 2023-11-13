@@ -6,9 +6,9 @@ import {
   waitFor,
 } from '@testing-library/react';
 
+import TrashIcon from '../../../Icons/TrashIcon';
 import { Provider } from 'react-redux';
 import NavIcons from './NavIcons';
-import TrashIcon from '../../../Icons/TrashIcon';
 import store from '../../../Redux/store';
 
 const render = (component: any) =>
@@ -25,7 +25,7 @@ describe('NavBarMobile', () => {
         mobile
       />
     );
-    const navIcon = screen.getByTestId('NavIcon');
+    const navIcon = screen.getByTestId('NavButton');
     const formBox = screen.getByTestId('form_box');
 
     expect(formBox).toHaveClass('translate-y-[0px]');

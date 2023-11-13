@@ -1,66 +1,58 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import { useDispatch } from 'react-redux';
-import { FiMoreVertical } from 'react-icons/fi';
+import { useDispatch, useSelector } from 'react-redux';
+import { BiSolidDownArrow } from 'react-icons/bi';
+import { useEffect, useState } from 'react';
 import NavIcons from '../navbar_icon_component/NavIcons';
-import TrashIcon from '../../../Icons/TrashIcon';
-import NodeIcon from '../../../Icons/NodeIcon';
+import NavBarIcons from '../../../OtherFunctions/NavBarIcons';
 import { setEnlargeNavBar } from '../../../Redux/NavBarReducer';
 
 function NavbarDesktop() {
   const dispatch = useDispatch();
+  const { enlargeNavBar } = useSelector((state: any) => state.NavbarRed);
+  const [currentStyle, setCurrentStyle] = useState({});
+  useEffect(() => {
+    if (!enlargeNavBar) {
+      setCurrentStyle({ overflow: 'hidden' });
+    }
+    if (enlargeNavBar) {
+      setTimeout(() => {
+        setCurrentStyle({ overflow: 'visible' });
+      }, 300);
+    }
+  }, [enlargeNavBar]);
 
   return (
     <div
-      className="w-fit h-[50px] flex justify-start items-center flex-row gap-3 max-md:hidden flex-wrap"
+      className="w-fit h-[50px] flex justify-start items-center flex-row gap-3 max-md:hidden flex-wrap relative"
       data-testid="desktop-comp"
+      style={currentStyle}
     >
-      {/* ADD */}
-      <NavIcons
-        name="Add Node"
-        icon={<TrashIcon size={30} color="white" />}
-        FormBox={{ required: true, name: 'Add Node', label: 'Ex. 1' }}
-        mobile={false}
-      />
-      {/* Delete */}
-
-      <NavIcons
-        name="Delete Node"
-        icon={<NodeIcon size={30} status="create" color="white" />}
-        FormBox={{ required: true, name: 'Delete Node', label: 'Ex. 1' }}
-        mobile={false}
-      />
-      {/* Search */}
-      <NavIcons
-        name="Search Node"
-        icon={<NodeIcon size={30} status="clear" color="white" />}
-        FormBox={{ required: true, name: 'Search Node', label: 'Ex. 1' }}
-        mobile={false}
-      />
-
-      {/* Create */}
-      <NavIcons
-        name="Create New LinkedList"
-        icon={<TrashIcon size={30} color="white" />}
-        FormBox={{ required: false }}
-        mobile={false}
-      />
+      {NavBarIcons(false).map((item) => (
+        <div key={item.id} className="relative">
+          <NavIcons
+            name={item.name}
+            icon={item.icon}
+            FormBox={item.FormBox}
+            mobile={item.mobile}
+          />
+        </div>
+      ))}
       <button
         type="button"
         data-testid="manu_icon"
-        className="max-[1044px]:inline hidden hover:cursor-pointer"
+        className="max-[1044px]:inline hidden hover:cursor-pointer absolute top-1/2 transform -translate-y-1/2 right-[20px]"
         onClick={() => {
           dispatch(setEnlargeNavBar());
         }}
       >
-        <FiMoreVertical style={{ color: 'white' }} />
+        <div
+          className={`${
+            enlargeNavBar ? 'rotate-180' : 'rotate-0'
+          } duration-300`}
+        >
+          <BiSolidDownArrow style={{ color: 'white' }} />
+        </div>
       </button>
-      {/* Clear */}
-      <NavIcons
-        name="Clear LinkedList"
-        icon={<NodeIcon size={30} status="create" color="white" />}
-        FormBox={{ required: false }}
-        mobile={false}
-      />
     </div>
   );
 }

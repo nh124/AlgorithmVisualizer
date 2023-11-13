@@ -1,5 +1,5 @@
+import NavBarIcons from '../../../OtherFunctions/NavBarIcons';
 import NavIcons from '../navbar_icon_component/NavIcons';
-import TrashIcon from '../../../Icons/TrashIcon';
 
 function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
   const size = 5;
@@ -15,16 +15,16 @@ function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
       }}
       data-testid="mobile-menu"
     >
-      {Array.from({ length: size }).map((_, index) => (
+      {NavBarIcons(true).map((item) => (
         <div
           className="w-full h-[50px] bg-slate-900 flex justify-center items-center"
-          key={index}
+          key={item.id}
         >
           <NavIcons
-            name="Add Node"
-            icon={<TrashIcon size={30} color="white" />}
-            FormBox={{ required: true, name: 'Add Node', label: 'Ex. 1' }}
-            mobile
+            name={item.name}
+            icon={item.icon}
+            FormBox={item.FormBox}
+            mobile={item.mobile}
           />
         </div>
       ))}

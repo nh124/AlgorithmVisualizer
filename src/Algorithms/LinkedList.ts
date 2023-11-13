@@ -1,6 +1,6 @@
 import Node from './Node';
 
-export default class linkedList<T> {
+export default class LinkedList<T> {
   head: Node<T> | null;
 
   tail: Node<T> | null;
@@ -12,7 +12,8 @@ export default class linkedList<T> {
 
   add(val: T): void {
     if (this.head === null) {
-      this.head = this.tail = new Node(val);
+      this.head = new Node(val);
+      this.tail = new Node(val);
     } else {
       const oldTail = this.tail;
       this.tail = new Node(val);
@@ -41,13 +42,13 @@ export default class linkedList<T> {
       this.addFirst(val);
       return;
     }
-    let c_index = 0;
-    while (currentNode !== null && c_index + 2 < index) {
+    let cIndex = 0;
+    while (currentNode !== null && cIndex + 2 < index) {
       if (currentNode.next === null) {
         break;
       }
       currentNode = currentNode.next;
-      c_index++;
+      cIndex += 1;
     }
     if (currentNode.next !== null) {
       const newNode = new Node(val);
@@ -61,16 +62,16 @@ export default class linkedList<T> {
 
   delete(val: T): boolean {
     if (this.head === null) return false;
-    const { value: curr_head } = this.head.val as { value: T };
-    const { value: given_val } = val as { value: T };
-    if (curr_head === given_val) {
+    const { value: currHead } = this.head.val as { value: T };
+    const { value: givenVal } = val as { value: T };
+    if (currHead === givenVal) {
       this.head = this.head.next;
       return true;
     }
     let current = this.head;
     while (current?.next !== null) {
-      const { value: curr_val } = current?.next.val as { value: T };
-      if (curr_val === given_val) {
+      const { value: currVal } = current?.next.val as { value: T };
+      if (currVal === givenVal) {
         const nextNode = current.next;
         current.next = current.next.next;
         nextNode.next = null;
@@ -86,13 +87,13 @@ export default class linkedList<T> {
     let current = this.head;
 
     while (current !== null) {
-      const { value: current_val } = current.val as { value: T };
-      const { value: find_val } = val as { value: T };
-      if (current_val === find_val) {
+      const { value: currentVal } = current.val as { value: T };
+      const { value: findVal } = val as { value: T };
+      if (currentVal === findVal) {
         return index + 1;
       }
       current = current.next;
-      index++;
+      index += 1;
     }
 
     return -1;

@@ -1,4 +1,10 @@
-const FormComponent = ({ name, lable }: { name: string; lable: string }) => {
+function FormComponent({
+  name,
+  label,
+}: {
+  name: string | undefined;
+  label: string | undefined;
+}) {
   return (
     <form
       action=""
@@ -10,8 +16,8 @@ const FormComponent = ({ name, lable }: { name: string; lable: string }) => {
           className="shadow appearance-none border border-none rounded max-w-[100px] py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outlin bg-[#34495E] h-[40px] "
           id="Node"
           type="number"
-          placeholder={lable}
-          value={""}
+          placeholder={label}
+          value=""
           onChange={() => {}}
           required
           max="10"
@@ -24,6 +30,6 @@ const FormComponent = ({ name, lable }: { name: string; lable: string }) => {
       </div>
     </form>
   );
-};
+}
 
 export default FormComponent;

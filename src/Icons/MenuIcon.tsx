@@ -8,8 +8,7 @@ function MenuIcon({
   color: string;
 }) {
   return (
-    <button
-      type="button"
+    <div
       className={` h-[${size}px] flex flex-col relative justify-between group`}
       style={{ width: `${size}px`, height: `${size}px` }}
     >
@@ -36,7 +35,7 @@ function MenuIcon({
         } rounded-lg duration-300`}
         style={{ backgroundColor: `${color}` }}
       />
-    </button>
+    </div>
   );
 }
 

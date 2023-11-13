@@ -1,5 +1,6 @@
 export default class Node<T> {
   val: T;
+
   next: Node<T> | null;
 
   constructor(val: T) {
