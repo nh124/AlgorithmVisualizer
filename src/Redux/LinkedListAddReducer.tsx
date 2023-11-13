@@ -8,10 +8,10 @@ export const LinkedListAddReducer = createSlice({
     addedNode: false,
   },
   reducers: {
-    setLinkedList: (state, action: PayloadAction<NodeType>) => {
+    setLinkedList: (state, action: PayloadAction<NodeType[]>) => {
       return {
         ...state,
-        linkedlist: [...state.linkedlist, action.payload],
+        linkedlist: action.payload,
       };
     },
     setAddedNode: (state) => {

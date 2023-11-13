@@ -10,14 +10,15 @@ export default class LinkedList<T> {
     this.tail = null;
   }
 
-  add(val: T): void {
-    if (this.head === null) {
-      this.head = new Node(val);
-      this.tail = new Node(val);
-    } else {
-      const oldTail = this.tail;
-      this.tail = new Node(val);
-      if (oldTail !== null) oldTail.next = this.tail;
+  add(value: T): void {
+    const newNode = new Node(value);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else if (this.tail) {
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
   }
 

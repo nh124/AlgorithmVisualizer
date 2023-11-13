@@ -2,11 +2,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useSelector, useDispatch } from 'react-redux';
 import { BsChevronDoubleDown } from 'react-icons/bs';
+import { useEffect, useState } from 'react';
 import MenuIcon from '../../../Icons/MenuIcon';
 import NavbarDesktop from '../navbar_desktop_component/NavbarDesktop';
 import NavBarMobile from '../navbar_mobile_component/NavBarMobile';
 import { setShowMenu, setShowMobileMenu } from '../../../Redux/NavBarReducer';
-import { useEffect, useState } from 'react';
 
 function Navbar() {
   const { showMenu } = useSelector((state: any) => state.NavbarRed);

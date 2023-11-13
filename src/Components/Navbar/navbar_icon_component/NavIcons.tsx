@@ -7,7 +7,6 @@ import NodeIcon from '../../../Icons/NodeIcon';
 import IconType from '../../../OtherFunctions/IconTypes';
 import FormBoxType from '../../../OtherFunctions/FormBoxType';
 import { UnisetEnlargeNavBar } from '../../../Redux/NavBarReducer';
-import { BsWindowSidebar } from 'react-icons/bs';
 
 function NavIcons({
   name,
