@@ -36,11 +36,20 @@ describe('NavBar', () => {
     const navbar = screen.getByTestId('NavBar');
     const navbarStyle = window.getComputedStyle(navbar);
     expect(navbarStyle.height).toBe('50px');
-    const button = screen.getByTestId('manu_icon');
-    fireEvent.click(button);
+    window.innerHeight = 600;
+    const buttonOnBiggerHeight = screen.getByTestId('manu_icon');
+    fireEvent.click(buttonOnBiggerHeight);
     await waitFor(() => {
       const ubdatednavbarStyle = window.getComputedStyle(navbar);
-      expect(ubdatednavbarStyle.height).toBe('120px');
+      expect(ubdatednavbarStyle.height).toBe('140px');
+    });
+    fireEvent.click(buttonOnBiggerHeight);
+    window.innerHeight = 400;
+    const buttonOnSmallerHeight = screen.getByTestId('manu_icon');
+    fireEvent.click(buttonOnSmallerHeight);
+    await waitFor(() => {
+      const ubdatednavbarStyle = window.getComputedStyle(navbar);
+      expect(ubdatednavbarStyle.height).toBe('170px');
     });
   });
 });

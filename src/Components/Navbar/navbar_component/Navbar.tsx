@@ -19,7 +19,7 @@ function Navbar() {
       setHeightStyle({ height: '140px' });
     } else if (enlargeNavBar && window.innerHeight <= 530) {
       setHeightStyle({ height: '170px' });
-    } else {
+    } else if (!enlargeNavBar) {
       setHeightStyle({ height: '50px' });
     }
   }, [enlargeNavBar, window.innerHeight]);
