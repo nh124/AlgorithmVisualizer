@@ -20,7 +20,7 @@ describe('NavBarMobile', () => {
     render(
       <NavIcons
         name="Add Node"
-        icon={TrashIcon}
+        icon="DeleteIcon"
         FormBox={{ required: true, name: 'Add Node', label: 'Ex. 1' }}
         mobile
       />
