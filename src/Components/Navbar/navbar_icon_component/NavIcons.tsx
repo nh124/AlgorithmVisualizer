@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { BiSolidUpArrow } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
-import FormComponent from '../../FormComponent';
+import FormComponent from '../../FormComponent/FormComponent';
 import TrashIcon from '../../../Icons/TrashIcon';
 import NodeIcon from '../../../Icons/NodeIcon';
 import IconType from '../../../OtherFunctions/IconTypes';

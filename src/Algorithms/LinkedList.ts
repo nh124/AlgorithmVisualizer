@@ -70,6 +70,10 @@ export default class LinkedList<T> {
       return true;
     }
     let current = this.head;
+    if (isNaN(val.value)) {
+      const deleteLast = this.deleteLast();
+      if (deleteLast) return true;
+    }
     while (current?.next !== null) {
       const { value: currVal } = current?.next.val as { value: T };
       if (currVal === givenVal) {
@@ -81,6 +85,28 @@ export default class LinkedList<T> {
       current = current?.next;
     }
     return false;
+  }
+
+  deleteLast() {
+    if (this.head === null) {
+      return false;
+    }
+
+    let current = this.head;
+    if (current.next === null) {
+      this.head = null;
+      this.tail = null;
+      return true;
+    }
+    while (current.next?.next !== null) {
+      if (current.next === null) {
+        break;
+      }
+      current = current.next;
+    }
+    current.next = null;
+    this.tail = current;
+    return true;
   }
 
   search(val: T): number {

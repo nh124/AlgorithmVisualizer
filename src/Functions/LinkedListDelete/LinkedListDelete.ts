@@ -1,4 +1,4 @@
-import { setLinkedList } from '../../Redux/LinkedListAddReducer';
+import { setLinkedList } from '../../Redux/LinkedListReducer';
 import LinkedListInstance from '../CreateLinkedList/CreateLinkedList';
 import searchNode from '../SearchNode/searchNode';
 
