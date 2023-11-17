@@ -1,5 +1,5 @@
 export type NodeType = {
-  id: number;
+  id: number | null;
   value: number;
   isVisible: boolean;
 };

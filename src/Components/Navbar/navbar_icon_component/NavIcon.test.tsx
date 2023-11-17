@@ -6,8 +6,8 @@ import {
   waitFor,
 } from '@testing-library/react';
 
-import TrashIcon from '../../../Icons/TrashIcon';
 import { Provider } from 'react-redux';
+import TrashIcon from '../../../Icons/TrashIcon';
 import NavIcons from './NavIcons';
 import store from '../../../Redux/store';
 

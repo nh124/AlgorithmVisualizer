@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import AddNode from '../Functions/LinkedListAdd';
+import AddNode from '../Functions/LinkedListAdd/LinkedListAdd';
+import searchNode from '../Functions/SearchNode/searchNode';
+import LinkedListDelete from '../Functions/LinkedListDelete/LinkedListDelete';
 
 function FormComponent({
   name,
@@ -18,6 +20,11 @@ function FormComponent({
     event.preventDefault();
     if (name === 'Add Node') {
       AddNode(input, dispatch);
+    } else if (name === 'Search Node') {
+      const index = searchNode(input);
+      console.log(index);
+    } else if (name === 'Delete Node') {
+      LinkedListDelete(input, dispatch);
     }
   };
   return (
