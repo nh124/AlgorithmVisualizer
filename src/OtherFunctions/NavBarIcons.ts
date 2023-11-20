@@ -1,69 +1,55 @@
 import IconType from './IconTypes';
 import FormBoxType from './FormBoxType';
 
-const NavBarIcons = (forMobile: boolean) => {
+const NavBarIcons = () => {
   interface NavBarIcon {
     id: number;
     name: string;
     icon: IconType;
-    FormBox: FormBoxType;
-    mobile: boolean;
+    FormBox: FormBoxType | string;
   }
   const NavBarIconsList: NavBarIcon[] = [
     {
       id: 1,
-      name: 'Add Node',
+      name: 'Create Linked List',
+      icon: 'createIcon',
+      FormBox: 'ButtonName',
+    },
+    {
+      id: 1,
+      name: 'Add',
       icon: 'AddIcon',
       FormBox: {
-        name: 'Add Node',
+        name: 'Add',
         required: true,
         label: 'Ex. 1',
       },
-      mobile: forMobile,
     },
     {
       id: 2,
-      name: 'Delete Node',
+      name: 'Delete',
       icon: 'DeleteIcon',
       FormBox: {
-        name: 'Delete Node',
+        name: 'Delete',
         required: true,
         label: 'Ex. 1',
       },
-      mobile: forMobile,
     },
     {
       id: 3,
-      name: 'Search Node',
+      name: 'Search',
       icon: 'SearchIcon',
       FormBox: {
-        name: 'Search Node',
+        name: 'Search',
         required: true,
         label: 'Ex. 1',
       },
-      mobile: forMobile,
-    },
-    {
-      id: 4,
-      name: 'Create a Linked List',
-      icon: 'createIcon',
-      FormBox: {
-        name: undefined,
-        required: false,
-        label: undefined,
-      },
-      mobile: forMobile,
     },
     {
       id: 5,
-      name: 'Clear a Linked List',
+      name: 'Clear all Linked List',
       icon: 'clearIcon',
-      FormBox: {
-        name: undefined,
-        required: false,
-        label: undefined,
-      },
-      mobile: forMobile,
+      FormBox: 'ButtonName',
     },
   ];
   return NavBarIconsList;

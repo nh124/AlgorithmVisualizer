@@ -1,32 +1,30 @@
-import { useState } from 'react';
-import { BiSolidUpArrow } from 'react-icons/bi';
-import { useDispatch } from 'react-redux';
-import FormComponent from '../../FormComponent/FormComponent';
 import TrashIcon from '../../../Icons/TrashIcon';
 import NodeIcon from '../../../Icons/NodeIcon';
 import IconType from '../../../OtherFunctions/IconTypes';
-import FormBoxType from '../../../OtherFunctions/FormBoxType';
-import { UnisetEnlargeNavBar } from '../../../Redux/NavBarReducer';
+import ManageLinkedList from '../../../Functions/ManageLinkedList/ManageLinkedList';
 
 function NavIcons({
   name,
   icon,
-  FormBox,
   mobile,
 }: {
   name: string;
   icon: IconType;
-  FormBox: FormBoxType;
   mobile: boolean;
 }) {
-  const [dropForm, setDropForm] = useState(false);
-  const dispatch = useDispatch();
   const icons = {
-    AddIcon: <TrashIcon size={30} color="white" />,
-    DeleteIcon: <TrashIcon size={30} color="white" />,
-    SearchIcon: <NodeIcon size={30} status="clear" color="white" />,
-    createIcon: <NodeIcon size={30} status="create" color="white" />,
-    clearIcon: <NodeIcon size={30} status="clear" color="white" />,
+    AddIcon: <TrashIcon size={30} color="black" />,
+    DeleteIcon: <TrashIcon size={30} color="black" />,
+    SearchIcon: <NodeIcon size={30} status="clear" color="black" />,
+    createIcon: <NodeIcon size={30} status="create" color="black" />,
+    clearIcon: <NodeIcon size={30} status="clear" color="black" />,
+  };
+
+  const { createList, clearList } = ManageLinkedList();
+
+  const handleFunction = () => {
+    if (name === 'Create Linked List') createList();
+    if (name === 'Clear all Linked List') clearList();
   };
   return (
     <div
@@ -35,37 +33,16 @@ function NavIcons({
       } h-full text-white flex justify-center items-center hover:bg-[#1ABC9C] duration-300 ease-in-out group relative`}
     >
       <button
-        onClick={() => {
-          setDropForm(!dropForm);
-          if (window.innerWidth <= 1041) {
-            dispatch(UnisetEnlargeNavBar());
-          }
-        }}
         type="button"
         data-testid="NavButton"
-        className="w-full h-full px-3 py-3"
+        className="w-full h-full px-3 py-3 flex flex-row items-center"
+        onClick={() => handleFunction()}
       >
-        <div className="flex flex-row justify-center items-center gap-2 relative">
-          <span className="group-hover:opacity-0 duration-300 ease-in-out">
-            {name}
-          </span>
-          <div className="rotate-180">
-            <BiSolidUpArrow />
-          </div>
-        </div>
         {icons[icon]}
+        <div className="flex flex-row justify-center items-center gap-2 relative">
+          <span>{name}</span>
+        </div>
       </button>
-
-      <div
-        data-testid="form_box"
-        className={`w-fit h-fit absolute top-0 ease-in-out duration-300 -z-10 rounded-br-md rounded-bl-md py-1 flex flex-row  ${
-          dropForm ? 'translate-y-[50px] z-10' : 'translate-y-[0px]'
-        } bg-slate-500`}
-      >
-        {FormBox.required && (
-          <FormComponent name={FormBox.name} label={FormBox.label} />
-        )}
-      </div>
     </div>
   );
 }

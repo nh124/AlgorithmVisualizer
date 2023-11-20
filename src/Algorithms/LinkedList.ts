@@ -1,4 +1,10 @@
+/* eslint-disable no-restricted-globals */
 import Node from './Node';
+import { NodeType } from './NodeType';
+
+interface NodeWithValue {
+  value: unknown;
+}
 
 export default class LinkedList<T> {
   head: Node<T> | null;
@@ -62,20 +68,21 @@ export default class LinkedList<T> {
   }
 
   delete(val: T): boolean {
+    const input = val as NodeType;
     if (this.head === null) return false;
-    const { value: currHead } = this.head.val as { value: T };
-    const { value: givenVal } = val as { value: T };
+    const { value: currHead } = this.head.val as NodeWithValue;
+    const { value: givenVal } = input as NodeWithValue;
     if (currHead === givenVal) {
       this.head = this.head.next;
       return true;
     }
     let current = this.head;
-    if (isNaN(val.value)) {
+    if (isNaN(input.value)) {
       const deleteLast = this.deleteLast();
       if (deleteLast) return true;
     }
     while (current?.next !== null) {
-      const { value: currVal } = current?.next.val as { value: T };
+      const { value: currVal } = current?.next.val as NodeWithValue;
       if (currVal === givenVal) {
         const nextNode = current.next;
         current.next = current.next.next;

@@ -1,5 +1,5 @@
 import Navbar from './Components/Navbar/navbar_component/Navbar';
-import DisplayPanel from './Components/DisplayPanel';
+import DisplayPanel from './Components/DisplayPanel/DisplayPanel';
 
 function App() {
   return (
