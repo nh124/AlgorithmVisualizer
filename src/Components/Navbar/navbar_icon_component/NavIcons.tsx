@@ -3,15 +3,7 @@ import NodeIcon from '../../../Icons/NodeIcon';
 import IconType from '../../../OtherFunctions/IconTypes';
 import ManageLinkedList from '../../../Functions/ManageLinkedList/ManageLinkedList';
 
-function NavIcons({
-  name,
-  icon,
-  mobile,
-}: {
-  name: string;
-  icon: IconType;
-  mobile: boolean;
-}) {
+function NavIcons({ name, icon }: { name: string; icon: IconType }) {
   const icons = {
     AddIcon: <TrashIcon size={30} color="black" />,
     DeleteIcon: <TrashIcon size={30} color="black" />,
@@ -27,18 +19,14 @@ function NavIcons({
     if (name === 'Clear all Linked List') clearList();
   };
   return (
-    <div
-      className={`${
-        mobile ? 'w-full' : 'w-fit'
-      } h-full text-white flex justify-center items-center hover:bg-[#1ABC9C] duration-300 ease-in-out group relative`}
-    >
+    <div className="h-fit text-black flex justify-center items-center duration-300 ease-in-out group relative">
       <button
         type="button"
         data-testid="NavButton"
-        className="w-full h-full px-3 py-3 flex flex-row items-center"
+        className="w-full h-full px-2 py-1 flex flex-row items-center"
         onClick={() => handleFunction()}
       >
-        {icons[icon]}
+        <div className="max-md:hidden">{icons[icon]}</div>
         <div className="flex flex-row justify-center items-center gap-2 relative">
           <span>{name}</span>
         </div>

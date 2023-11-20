@@ -33,11 +33,7 @@ function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
           .filter((item) => item.FormBox === 'ButtonName')
           .map((item) => (
             <div className="w-full h-[50px] flex justify-center" key={item.id}>
-              <NavIcons
-                name={item.name}
-                icon={item.icon}
-                mobile={item.mobile}
-              />
+              <NavIcons name={item.name} icon={item.icon} />
             </div>
           ))}
       </div>
