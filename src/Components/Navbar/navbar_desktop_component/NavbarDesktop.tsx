@@ -12,7 +12,7 @@ function NavbarDesktop() {
         .filter((item) => item.FormBox === 'ButtonName')
         .map((item) => (
           <div key={item.id}>
-            <NavIcons name={item.name} icon={item.icon} mobile={item.mobile} />
+            <NavIcons name={item.name} icon={item.icon} />
           </div>
         ))}
     </div>

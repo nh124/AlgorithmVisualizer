@@ -8,7 +8,7 @@ function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
   const height = 50;
   const dispatch = useDispatch();
   return (
-    <div className="absolute bottom-0 w-full left-0  justify-center items-center bg-slate-200 flex-col h-auto gap-3 pt-2 hidden max-md:flex">
+    <div className="relative bottom-0 w-full left-0 justify-center items-center bg-slate-200 flex-col h-auto gap-3 pt-2 hidden max-md:flex z-10">
       <button
         type="button"
         className={`max-md:flex h-fit w-full flex justify-center  `}

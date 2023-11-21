@@ -25,7 +25,7 @@ function DisplayPanel() {
     deleteItemFromList(index);
   };
   return (
-    <div className="w-full h-full bg-white flex justify-center py-4 overflow-auto">
+    <div className="w-full h-full bg-white flex justify-center py-4 overflow-auto relative z-0">
       <div className="w-[90%] h-fit flex flex-col py-3 px-3 mt-[50px] gap-7">
         {linkedlist.map((list: LinkedList<NodeType>, index: number) => {
           return (

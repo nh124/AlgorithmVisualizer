@@ -6,7 +6,7 @@ import NavBarIcons from '../../OtherFunctions/NavBarIcons';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
 import { setListIndex } from '../../Redux/LinkedListReducer';
 
-function ButtonToForm({ index }) {
+function ButtonToForm({ index }: { index: number }) {
   const loadIcons: { [key: string]: JSX.Element } = {
     Add: <NodeIcon size={20} status="create" color="black" />,
     Delete: <NodeIcon size={20} status="create" color="black" />,
@@ -15,7 +15,7 @@ function ButtonToForm({ index }) {
   const dispatch = useDispatch();
   return (
     <div
-      className="flex flex-row"
+      className="flex flex-row max-md:flex-col"
       onClick={() => dispatch(setListIndex(index))}
       role="button"
     >

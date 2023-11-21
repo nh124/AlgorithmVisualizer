@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react/react-in-jsx-scope */
 import { useSelector } from 'react-redux';
-
 import NavbarDesktop from '../navbar_desktop_component/NavbarDesktop';
-import NavBarMobile from '../navbar_mobile_component/NavBarMobile';
 
 function Navbar() {
-  const { showMobileMenu } = useSelector((state: any) => state.NavbarRed);
-
   return (
     <div
       className="w-full flex flex-row justify-between pl-1 pr-4 py-2 bg-slate-200"
@@ -26,7 +22,6 @@ function Navbar() {
         </div>
         <NavbarDesktop />
       </div>
-      <NavBarMobile showMobileMenu={showMobileMenu} />
     </div>
   );
 }

@@ -7,6 +7,7 @@ interface NodeWithValue {
 }
 
 export default class LinkedList<T> {
+  [x: string]: any;
   head: Node<T> | null;
 
   tail: Node<T> | null;
