@@ -3,7 +3,6 @@ import {
   render as rtlRender,
   screen,
   fireEvent,
-  waitFor,
   act,
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -32,10 +31,10 @@ describe('Navbar loads two icons', () => {
     render(<Navbar />);
     const title = screen.getByText('Linked List');
     expect(title).toBeInTheDocument();
-    const NavIcons = NavBarIcons()
+    const NavIconsFunc = NavBarIcons()
       .filter((item) => item.FormBox === 'ButtonName')
       .map((item) => item.name);
-    expect(NavIcons).not.toStrictEqual(['Add', 'Delete', 'Search']);
+    expect(NavIconsFunc).not.toStrictEqual(['Add', 'Delete', 'Search']);
   });
 });
 
@@ -50,7 +49,7 @@ describe('NavIcon click to Creating linkedList', () => {
     // Render TestComponent once
     render(<TestComponent />);
     // Retrieve the element with data-testid="testNumber"
-    const listCount = screen.getByTestId('testNumber').textContent;
+    const listCount = screen.getByTestId('testNumber').textContent as string;
     expect(parseInt(listCount, 10)).toBe(0);
     const navButton = screen.getByTestId('NavButton');
     fireEvent.click(navButton);
@@ -60,7 +59,8 @@ describe('NavIcon click to Creating linkedList', () => {
     });
     const linkedListContainers = screen.queryAllByTestId('linkedListContainer');
     expect(linkedListContainers[0]).toBeInTheDocument();
-    const updatedListCount = screen.getAllByTestId('testNumber')[1].textContent;
+    const updatedListCount = screen.getAllByTestId('testNumber')[1]
+      .textContent as string;
     expect(parseInt(updatedListCount, 10)).toBe(1);
   });
 });
@@ -76,7 +76,7 @@ describe('NavIcon click to Creating linkedList', () => {
     // Render TestComponent once
     render(<TestComponent />);
     // Retrieve the element with data-testid="testNumber"
-    const listCount = screen.getByTestId('testNumber').textContent;
+    const listCount = screen.getByTestId('testNumber').textContent as string;
     expect(parseInt(listCount, 10)).toBe(1);
     const navButton = screen.getByTestId('NavButton');
     fireEvent.click(navButton);
@@ -84,7 +84,8 @@ describe('NavIcon click to Creating linkedList', () => {
       render(<TestComponent />);
       render(<DisplayPanel />);
     });
-    const updatedListCount = screen.getAllByTestId('testNumber')[1].textContent;
+    const updatedListCount = screen.getAllByTestId('testNumber')[1]
+      .textContent as string;
     const defaultElment = screen.getByText('Sandbox');
     expect(parseInt(updatedListCount, 10)).toBe(0);
     expect(defaultElment).toBeInTheDocument();
