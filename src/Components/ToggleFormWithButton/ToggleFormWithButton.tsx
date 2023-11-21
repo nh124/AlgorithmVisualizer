@@ -1,22 +1,15 @@
-import React, { useState } from 'react';
-import ManageLinkedList from '../../Functions/ManageLinkedList/ManageLinkedList';
+import { useState } from 'react';
 import FormComponent from '../FormComponent/FormComponent';
 
-function ButtonComponent({
+function ToggleFormWithButton({
   name,
   icon,
 }: {
   name: string | undefined;
   icon: JSX.Element;
 }) {
-  const { createList } = ManageLinkedList();
   const [style, setStyle] = useState({ width: 'auto' });
   const [expand, setExpand] = useState(false);
-  const handleClick = () => {
-    if (name === 'Create Linked List') {
-      createList();
-    }
-  };
   const Expand = () => {
     setExpand(!expand);
     if (!expand && name === 'Add') setStyle({ width: '280px' });
@@ -45,4 +38,4 @@ function ButtonComponent({
   );
 }
 
-export default ButtonComponent;
+export default ToggleFormWithButton;

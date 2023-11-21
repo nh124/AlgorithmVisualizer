@@ -6,7 +6,7 @@ import { IoClose } from 'react-icons/io5';
 import { NodeType } from '../../Algorithms/NodeType';
 import NodeElement from '../NodeElement/NodeElement';
 import LinkedList from '../../Algorithms/LinkedList';
-import ButtonToForm from './ButtonToForm';
+import ListToggleFormWithButton from './ListToggleFormWithButton';
 import ManageLinkedList from '../../Functions/ManageLinkedList/ManageLinkedList';
 
 function DisplayPanel() {
@@ -29,7 +29,10 @@ function DisplayPanel() {
       <div className="w-[90%] h-fit flex flex-col py-3 px-3 mt-[50px] gap-7">
         {linkedlist.map((list: LinkedList<NodeType>, index: number) => {
           return (
-            <div className="flex flex-col gap-1">
+            <div
+              className="flex flex-col gap-1"
+              data-testid="linkedListContainer"
+            >
               <div
                 className="flex flex-row px-3 py-4 rounded-md bg-slate-200 h-fit overflow-auto relative pb-[50px]"
                 key={index}
@@ -52,7 +55,7 @@ function DisplayPanel() {
                   <BsArrow90DegRight size={25} />
                 </div>
               </div>
-              <ButtonToForm index={index} />
+              <ListToggleFormWithButton index={index} />
             </div>
           );
         })}
