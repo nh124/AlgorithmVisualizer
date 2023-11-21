@@ -3,10 +3,10 @@
 import { useDispatch } from 'react-redux';
 import NodeIcon from '../../Icons/NodeIcon';
 import NavBarIcons from '../../OtherFunctions/NavBarIcons';
-import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import ToggleFormWithButton from '../ToggleFormWithButton/ToggleFormWithButton';
 import { setListIndex } from '../../Redux/LinkedListReducer';
 
-function ButtonToForm({ index }: { index: number }) {
+function ListToggleFormWithButton({ index }: { index: number }) {
   const loadIcons: { [key: string]: JSX.Element } = {
     Add: <NodeIcon size={20} status="create" color="black" />,
     Delete: <NodeIcon size={20} status="create" color="black" />,
@@ -23,11 +23,14 @@ function ButtonToForm({ index }: { index: number }) {
         .filter((item) => item.FormBox !== 'ButtonName')
         .map((item) => (
           <div key={item.id}>
-            <ButtonComponent name={item.name} icon={loadIcons[item.name]} />
+            <ToggleFormWithButton
+              name={item.name}
+              icon={loadIcons[item.name]}
+            />
           </div>
         ))}
     </div>
   );
 }
 
-export default ButtonToForm;
+export default ListToggleFormWithButton;

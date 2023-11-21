@@ -24,6 +24,9 @@ const ManageLinkedList = () => {
     return LinkedListManager.getList(index);
   };
 
+  const getAllLists = () => {
+    return LinkedListManager.getAllLists();
+  };
   const createList = (): boolean => {
     const linkedlist = new LinkedList<NodeType>();
     LinkedListManager.addList(linkedlist);
@@ -54,7 +57,14 @@ const ManageLinkedList = () => {
     dispatch(setLinkedList(serializeList));
     return true;
   };
-  return { createList, getList, AlterList, clearList, deleteItemFromList };
+  return {
+    createList,
+    getList,
+    AlterList,
+    clearList,
+    deleteItemFromList,
+    getAllLists,
+  };
 };
 
 export default ManageLinkedList;

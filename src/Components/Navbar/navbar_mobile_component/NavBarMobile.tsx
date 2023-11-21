@@ -1,10 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsChevronDoubleDown } from 'react-icons/bs';
 import NavBarIcons from '../../../OtherFunctions/NavBarIcons';
 import NavIcons from '../navbar_icon_component/NavIcons';
 import { setShowMobileMenu } from '../../../Redux/NavBarReducer';
 
-function NavBarMobile({ showMobileMenu }: { showMobileMenu: boolean }) {
+function NavBarMobile() {
+  const { showMobileMenu } = useSelector((state: any) => state.NavbarRed);
   const height = 50;
   const dispatch = useDispatch();
   return (

@@ -70,38 +70,3 @@ function FormComponent({
 }
 
 export default FormComponent;
-
-{
-  /* <form
-          action=""
-          onSubmit={handleSubmit}
-          className="flex h-fit text-black justify-center gap-3 flex-row text-sm"
-        >
-          <div className="w-full flex flex-row gap-1 items-center">
-            <input
-              className="shadow appearance-none border border-none rounded-sm max-w-[70px] px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline bg-slate-300 h-[40px]"
-              value={input}
-              placeholder={label}
-              onChange={setInputOnchange}
-              required={name !== 'Delete'}
-              max="10"
-              type="number"
-            />
-            {name === 'Add' && (
-              <input
-                className="shadow appearance-none border border-none rounded-sm max-w-[70px] px-3 text-gray-800 leading-tight focus:outline-none focus:shadow-outline bg-slate-300 h-[40px] "
-                value={index}
-                placeholder="Index"
-                onChange={setIndexOnChange}
-                max="10"
-                type="number"
-              />
-            )}
-            <input
-              type="submit"
-              value={name}
-              className="bg-slate-300 rounded-sm w-full hover:cursor-pointer hover:bg-slate-400 px-2 py-2"
-            />
-          </div>
-        </form>  */
-}
