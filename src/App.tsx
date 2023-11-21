@@ -6,7 +6,7 @@ import NavBarMobile from './Components/Navbar/navbar_mobile_component/NavBarMobi
 function App() {
   const { showMobileMenu } = useSelector((state: any) => state.NavbarRed);
   return (
-    <div className="w-full h-screen bg-white flex flex-col relative max-md:h-[80vh]">
+    <div className="w-full h-screen bg-white flex flex-col relative max-md:h-[90vh]">
       <Navbar />
       <DisplayPanel />
       <NavBarMobile showMobileMenu={showMobileMenu} />
